@@ -1,6 +1,10 @@
 #Terrance Usher
 #January 18, 2022
 
+restart="True"
+while [ $restart == "True" ]
+do
+
 echo "Hello User would you like to watch a show or movie?"
 echo "If show then input 1, if movie then input 2, if neither then input 3."
 read input
@@ -37,13 +41,22 @@ echo ""
 echo "There is no episode after episode 60!"
 fi
 done
+restart="False"
 
 elif [ "$input" == "2" ]
 then
 echo "Cool then get ready to watch the hit movie Jimmy Neutron: Boy Genius!"
+restart="False"
 
 elif [ "$input" == "3" ]
 then
 echo "Booooo no Jimmy Neutron for you then. Bye."
+restart="False"
+
+else
+echo ""
+echo "Please enter 1, 2, or  3."
+echo ""
 
 fi
+done
