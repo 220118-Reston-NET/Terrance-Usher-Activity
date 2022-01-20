@@ -45,6 +45,7 @@ namespace EpisodeListFunction
             int EpisodeNumber = Convert.ToInt32(Console.ReadLine());
             userList.Add(EpisodeNumber,_episode[EpisodeNumber].Title);
             Console.WriteLine("\nAlright, I have now added Episode " + EpisodeNumber + " " + userList[EpisodeNumber] + " to you Already Watched List.");
+            Console.ReadLine();
         }
 
         public static void DisplayAWL(Dictionary<int,string> userList) // Display Already Watched List
@@ -53,6 +54,7 @@ namespace EpisodeListFunction
             {
                 Console.WriteLine("Episode: " + episode.Key + " " + episode.Value);
             }
+            Console.ReadLine();
         }
 
         public static void RemoveEpisode(Dictionary<int,string> userList)
@@ -61,6 +63,15 @@ namespace EpisodeListFunction
             int userInput = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Ok I will remove Episode: " + userInput + " " + userList[userInput] + " from your AWL.");
             userList.Remove(userInput);
+            Console.ReadLine();
+        }
+
+        public static void SearchEpisode()
+        {
+            Console.WriteLine("\nWhat episode number would you like to search?");
+            int userInput = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Episode " + userInput + " is titled: " + _episode[userInput].Title);
+            Console.ReadLine();
         }
 /*         public static void DisplayEL() //Display Episode List
         {
