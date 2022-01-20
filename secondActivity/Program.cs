@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 //Console.WriteLine("Hello, World!");
 using EpisodeListFunction;
+using SerializationFunction;
 
 
 bool restart = true;
@@ -56,9 +57,12 @@ while (restart)
          while (awl)
          {
              Console.Clear();
+             
              Console.WriteLine("\nWhat would you like to do with your Already Watched List (AWL)?" +
              "\nIf you would like to view your AWL input 1, if you would like to add an episode input 2," + 
-             " if you would like to remove an episode" + "\nfrom your AWL input 3, and would like to escape this menu input 4.");
+             " if you would like to remove an episode" + "\nfrom your AWL input 3, if you would like to save your AWL input 4 " + 
+             "and would like to escape this menu input 0.");
+
              string userAWLInput = Console.ReadLine();
              
              if (userAWLInput == "1")
@@ -76,8 +80,13 @@ while (restart)
              {
                  EpisodeList.RemoveEpisode(UserList);
              }
-
+            
              else if (userAWLInput == "4")
+             {
+                 Serialization.EpisodeSerialize(UserList);
+             }
+
+             else if (userAWLInput == "0")
              {
                  awl = false;
              }
