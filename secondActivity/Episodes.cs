@@ -4,7 +4,7 @@ namespace EpisodeListFunction
     {
         public string Title {get; set;}
 
-        public Dictionary<int,EpisodeList> _episode = new Dictionary<int, EpisodeList>()
+        public static Dictionary<int,EpisodeList> _episode = new Dictionary<int, EpisodeList>()
         {
             {01, new EpisodeList{ Title="When Pants Attack"} }, {02, new EpisodeList{ Title="Normal Boy/Birth fo a Salesman"} }, 
             {03, new EpisodeList{ Title="Brobot/The Big Pinch"} }, {04, new EpisodeList{ Title="Granny Baby/Time is Money"} }, 
@@ -42,8 +42,8 @@ namespace EpisodeListFunction
         public static void AddEpisode(Dictionary<int,string> userList)
         {
             Console.WriteLine("\nWhat episode would you like to add to your Already Watched List?");
-            int EpisodeNumber = Console.ReadLine();
-            userList.Add(EpisodeNumber,_episode[EpisodeNumber]);
+            int EpisodeNumber = Convert.ToInt32(Console.ReadLine());
+            userList.Add(EpisodeNumber,_episode[EpisodeNumber].Title);
             Console.WriteLine("\nAlright, I have now added Episode " + EpisodeNumber + " " + userList[EpisodeNumber] + " to you Already Watched List.");
         }
 
@@ -54,13 +54,21 @@ namespace EpisodeListFunction
                 Console.WriteLine("Episode: " + episode.Key + " " + episode.Value);
             }
         }
-        public static void DisplayEL() //Display Episode List
+
+        public static void RemoveEpisode(Dictionary<int,string> userList)
+        {
+            Console.WriteLine("\nWhat episode would you like to remove from your list?");
+            int userInput = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Ok I will remove Episode: " + userInput + " " + userList[userInput] + " from your AWL.");
+            userList.Remove(userInput);
+        }
+/*         public static void DisplayEL() //Display Episode List
         {
             foreach (KeyValuePair<int,string> episode in _episode)
             {
                 Console.WriteLine("Episode: " + episode.Key + " " + episode.Value);
             }
-        }
+        } */
     }
 }
 

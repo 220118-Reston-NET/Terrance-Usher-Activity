@@ -1,11 +1,15 @@
 ﻿// See https://aka.ms/new-console-template for more information
 //Console.WriteLine("Hello, World!");
+using EpisodeListFunction;
+
 Console.Clear();
 bool restart = true;
+Dictionary<int,string> UserList = new Dictionary<int, string>();
+
 while (restart)
 {
      Console.WriteLine("Hello user would you like to watch a show or movie?");
-     Console.WriteLine("If show then input 1, if movie then input 2, if neither then input 3.");
+     Console.WriteLine("If show then input 1, if movie then input 2, if you would like to update your watchlist input 3, if neither then input 4.");
      string input = Console.ReadLine();
      if (input == "1")
      {
@@ -41,6 +45,44 @@ while (restart)
      }
 
      else if (input == "3")
+     {
+         bool awl = true;
+         while (awl)
+         {
+             Console.WriteLine("\nWhat would you like to do with your Already Watched List (AWL)?" +
+             "\nIf you would like to view your AWL input 1, if you would like to add an episode input 2, if you would like to remove an episode" + "\nfrom your AWL input 3, and would like to escape this menu input 4.");
+             string userAWLInput = Console.ReadLine();
+             
+             if (userAWLInput == "1")
+             {
+                 Console.WriteLine("\nThe following is your Already Watched List: \n");
+                 EpisodeList.DisplayAWL(UserList);
+             }
+             
+             else if (userAWLInput == "2")
+             {
+                 EpisodeList.AddEpisode(UserList);
+             }
+
+             else if (userAWLInput == "3")
+             {
+                 EpisodeList.RemoveEpisode(UserList);
+             }
+
+             else if (userAWLInput == "4")
+             {
+                 awl = false;
+             }
+
+             else
+             {
+                 Console.WriteLine("Please input either 1, 2, 3, or 4.");
+             }
+         }
+
+     }
+
+     else if (input == "4")
      {
          Console.WriteLine("\n Booooo no Jimmy Neutron for you then. Bye.");
          restart = false;
